@@ -13,11 +13,9 @@ def add():
         video_link = request.form['video_link']
         notes_link = request.form['notes_link']
         new_session = Session(title=title,video_link=video_link,notes_link=notes_link)
-        try:
-            db.session.add(new_session)
-            db.session.commit()
-        except:
-            return "HAIL MARY!"
+
+        db.session.add(new_session)
+        db.session.commit()
 
     return render_template("add.html")
 
