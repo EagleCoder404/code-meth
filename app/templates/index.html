@@ -1,12 +1,25 @@
 {% extends "base.html" %}
 {% block body%}
+<div class='row'>
+    <input type="text" id='code' class='form-control form-control-lg col-10 rounded-0'>
+    <button id='get-btn' class='btn btn-lg btn-success col-2 rounded-0'>Get</button>
+</div>
 
-<input type="text" id='code'>
-<button id='get-btn'>Get</button>
 
-<h1 id='title'></h1>
-<iframe width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id='video'></iframe>
-<a href="" id='notes'></a>
+<div class='container title-box mt-3 mb-3'>    
+    <h1 id='title' class='p-0'>
+
+    </h1>
+</div>
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" height="500" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id='video'></iframe>
+</div>
+
+<div class='container notes-box'>
+    <a href="" id='notes'></a>
+</div>
+
 
 <script>
     $("#get-btn").click(function(){
@@ -28,6 +41,7 @@
                     $("#title")[0].innerHTML=response.title
                     video.setAttribute("src",response.video)
                     notes.setAttribute("href",response.file)
+                    notes.innerHTML="notes"
                 }
             },
             error:function(x,y,z){

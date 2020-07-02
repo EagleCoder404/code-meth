@@ -27,7 +27,4 @@ def get():
             return jsonify({"status":"1","title":str(s.title),"video":str(s.video_link),"file":str(s.notes_link)})
         else:
             return jsonify({"status":"0"})
-@app.route("/tables")
-def get_rows():
-    return str(Session.query.all())
 

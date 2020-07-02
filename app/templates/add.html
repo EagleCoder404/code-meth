@@ -1,9 +1,29 @@
 {% extends "base.html" %}
 {%block body%}
-<form action="/add" method='post'>
-    <input type="text" name='title'>
-    <input type="text" name='video_link'>
-    <input type="text" name='notes_link'>
-    <button type='submit'>Submit</button>
-</form>
+<div class='container shadow-lg p-3 rounded-lg'>
+    <form action="/add" method='post' class='form-group m-0' autocomplete="off">
+        <div class='input-group mb-3'>
+            <div class='input-group-prepend'>
+                <span class='input-group-text'>Title</span>
+            </div>
+            <input type="text" name='title' class='form-control'>
+        </div>
+
+        <div class='input-group mb-3'>
+            <div class='input-group-prepend'>
+                <span class='input-group-text'>Video</span>
+            </div>
+            <input type="text" name='video_link' class='form-control'>
+        </div>
+
+        <div class='input-group mb-3'>
+            <div class='input-group-prepend'>
+                <span class='input-group-text'>Notes</span>
+            </div>
+            <input type="text" name='notes_link' class='form-control'>
+        </div>
+
+        <button type='submit' class='btn btn-success'>Submit</button>
+    </form>
+</div>
 {%endblock%}
