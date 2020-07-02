@@ -29,5 +29,5 @@ def get():
             return jsonify({"status":"0"})
 @app.route("/tables")
 def get_rows():
-    return Session.query.all()
+    return str(Session.query.all())
 
