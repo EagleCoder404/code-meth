@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block body%}
+
+<input type="text" id='code'>
+<button id='get-btn'>Get</button>
+
+<h1 id='title'></h1>
+<iframe width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id='video'></iframe>
+<a href="" id='notes'></a>
+
+<script>
+    $("#get-btn").click(function(){
+        var code=$("#code")[0].value
+        var video = $("#video")[0]
+        var notes = $("#notes")[0]
+
+        $.ajax({
+            url:"/get",
+            method:"POST",
+            data:{"code":code},
+            success:function(response){
+                console.log(response)
+                if(response.status=="0")
+                    console.log("not found")
+                else
+                {
+                    console.log("i got it!")
+                    $("#title")[0].innerHTML=response.title
+                    video.setAttribute("src",response.video)
+                    notes.setAttribute("href",response.file)
+                }
+            },
+            error:function(x,y,z){
+                console.log(x,y,z)
+            }
+        })
+    })
+</script>
+{% endblock %}
