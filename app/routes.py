@@ -2,6 +2,7 @@ from app import app
 from flask import render_template,jsonify,request
 from app.models import Session
 from app import db
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -13,7 +14,6 @@ def add():
         video_link = request.form['video_link']
         notes_link = request.form['notes_link']
         new_session = Session(title=title,video_link=video_link,notes_link=notes_link)
-
         db.session.add(new_session)
         db.session.commit()
 
@@ -27,4 +27,7 @@ def get():
             return jsonify({"status":"1","title":str(s.title),"video":str(s.video_link),"file":str(s.notes_link)})
         else:
             return jsonify({"status":"0"})
+@app.route("/tables")
+def get_rows():
+    return Session.query.all()
 
